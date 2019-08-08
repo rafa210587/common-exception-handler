@@ -1,8 +1,8 @@
-package com.trust.comum.exception.handler.general;
+package comum.exception.handler.general;
 
 import org.springframework.http.HttpStatus;
 
-import com.trust.comum.exception.handler.domain.GenericError;
+import comum.exception.handler.domain.GenericError;
 
 /**
  * Exception that will occur in data validation

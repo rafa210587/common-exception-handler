@@ -1,9 +1,9 @@
-package com.trust.comum.exception.handler.integration;
+package comum.exception.handler.integration;
 
 import org.springframework.http.HttpStatus;
 
-import com.trust.comum.exception.handler.domain.GenericError;
-import com.trust.comum.exception.handler.general.Exception;
+import comum.exception.handler.domain.GenericError;
+import comum.exception.handler.general.Exception;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.trust.comum.exception.handler.domain;
+package comum.exception.handler.domain;
 
 import java.io.Serializable;
 

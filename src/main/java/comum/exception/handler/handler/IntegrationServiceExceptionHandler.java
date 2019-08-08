@@ -1,4 +1,4 @@
-package com.trust.comum.exception.handler.handler;
+package comum.exception.handler.handler;
 
 import java.sql.Timestamp;
 
@@ -8,9 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.trust.comum.exception.handler.domain.StandardError;
-import com.trust.comum.exception.handler.general.Exception;
-
+import comum.exception.handler.domain.StandardError;
+import comum.exception.handler.general.Exception;
 import lombok.extern.slf4j.Slf4j;
 
 /**
