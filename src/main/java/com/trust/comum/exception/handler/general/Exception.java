@@ -2,43 +2,43 @@ package com.trust.comum.exception.handler.general;
 
 import org.springframework.http.HttpStatus;
 
-import com.trust.comum.exception.handler.domain.TrustError;
+import com.trust.comum.exception.handler.domain.GenericError;
 
 /**
  * Default class that will handle errors in exceptions
  * 
  * @author rafael.goncalves
  */
-public class TrustException extends RuntimeException {
+public class Exception extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	TrustError trustError;
+	GenericError trustError;
 	HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
-	public TrustException(String msg, TrustError trustError) {
+	public Exception(String msg, GenericError trustError) {
 		super(msg);
 
 	}
 
-	public TrustException(String msg, TrustError trustError, Throwable cause) {
+	public Exception(String msg, GenericError trustError, Throwable cause) {
 		super(msg, cause);
 
 	}
 
-	public TrustException(String msg, TrustError trustError, HttpStatus httpStatus) {
+	public Exception(String msg, GenericError trustError, HttpStatus httpStatus) {
 		super(msg);
 
 		this.httpStatus = httpStatus;
 	}
 
-	public TrustException(String msg, TrustError trustError, HttpStatus httpStatus, Throwable cause) {
+	public Exception(String msg, GenericError trustError, HttpStatus httpStatus, Throwable cause) {
 		super(msg, cause);
 
 		this.httpStatus = httpStatus;
 	}
 
-	public TrustError getTrustError() {
+	public GenericError getTrustError() {
 		return trustError;
 	}
 	public HttpStatus getHttpStatus() {

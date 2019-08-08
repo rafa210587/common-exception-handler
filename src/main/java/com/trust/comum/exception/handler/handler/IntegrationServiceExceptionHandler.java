@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.trust.comum.exception.handler.domain.StandardError;
-import com.trust.comum.exception.handler.general.TrustException;
+import com.trust.comum.exception.handler.general.Exception;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,8 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class IntegrationServiceExceptionHandler {
 
-	@ExceptionHandler(TrustException.class)
-	public ResponseEntity<StandardError> trustHubException(TrustException e, HttpServletRequest request) {
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<StandardError> trustHubException(Exception e, HttpServletRequest request) {
 		StandardError err = new StandardError(new Timestamp(System.currentTimeMillis()), e.getTrustError().getErrorDescription(), e.getMessage(), request.getRequestURI());		
 		if(e != null && e.getMessage() != null) {
 			if(e.getMessage().contains("timestamp")	
