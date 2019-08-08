@@ -1,88 +1,66 @@
-# Repositório padrão para serviços spring boot com maven release
+# Lib for exception handler
 
-![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg) ![Pronto](https://img.shields.io/badge/Ready-ok-green.svg)
+Exception general handler that helps map where you exception occurred and to clean the many non essential information, leaving the real needed message to facilitate the analyzes of bugs, also can be customize for your needs, with methods to pass the httpCode or Status, you will also need to make a enum class with the messages you want to show to the client.
 
-Esse  repositório serve como base para novos serviços.
+#### To use:
+Import in your project
 
-#### Para usar:
-Basta `clonar/forkar/baixar` esse esqueleto e adaptar ao serviço desejado. 
+	<groupId>comum.exception.handler</groupId>
+		<artifactId>comum-exception-handler</artifactId>
+	<version>?.?.?</version>
 
-* No arquivo `.gitlab-ci.yml` estão as configurações de pipeline.
-* No arquivo `.gitlab-ci.yml` do novo projeto deve ser apagado todo o conteúdo e substituido por:
+# Example of use:
 
-```yml
- include:
-  - project: 'COMUM/repo-default'
-    ref: com-maven-release 
-    file: '.gitlab-ci.yml'
+#### Business Class
 ```
-* Onde o ref é o nome da branch que está sendo clonada.
-
-* No diretório `deploy/` estão configurações acerca do deploy, como Dockerfile, ansible, etc..
-
-* No arquivo `start.sh` estão a configuração de inicialização do serviço em rodando em container.
-
-* No arquivo `pom.xml` do seu projeto de ser configurado o `scm` com a url do projeto Git
-```xml
-<scm>
-    <connection>scm:git:https://maven-release:maven-passwd@gitlab.interno.srmasset.com/GRUPO/REPOSITORIO.git</connection>
-    <developerConnection>scm:git:https://maven-release:maven-passwd@gitlab.interno.srmasset.com/GRUPO/REPOSITORIO.git</developerConnection>
-    <url>https://gitlab.interno.srmasset.com/GRUPO/REPOSITORIO.git</url>
-    <tag>HEAD</tag>
-</scm>
-
+public class Example(){ 
+try {
+		service.findExample(id);
+		} catch (ServiceException | RepositoryException ea) {
+			throw ea;
+		} catch (Exception e) {
+			throw new BusinessException(
+				new StringBuilder(Messages.BUSINESS_ERROR_ACCESS_MULTIPLE_APIS)
+				.append(e.getMessage()).toString(),
+					IntegrationAPIError.ERROR_INTEGRATION_BUSINESS);
+		}
 ```
-#### Como Funciona:
-
-* No build é usado o maven para instalar dependências e compilar o pacote .jar.
-```shell
-mvn clean install -Dmaven.test.skip=true
+#### Service Class
 ```
-* O .jar é copiado para a container image em tempo de build
-
-* É copiado também um script que faz a verificação de qual profile será usado e sobe a aplicação com todoas as flags e necessárias:
-```shell
-#/bin/sh
-DOMAIN=$(echo "$CI_BUILD_URL" | awk -F/ '{print $3}')
-export SERVICE_HOSTNAME=${DOMAIN}
-
-echo $SERVICE_HOSTNAME > /tmp/start.log
-
-JVM_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Xms128M -Xmx128m -Xss256k"
-
-if [ "$1" = "production" ]; then
-   echo "perfil=producao" > /config/perfil.properties
-   SPRING_PROFILES="prod"
-elif [ "$1" = "staging" ]; then
-   echo "perfil=homologacao" > /config/perfil.properties
-   SPRING_PROFILES="hom"
-elif [ "$1" = "review-staging" ]; then
-   echo "perfil=homologacao" > /config/perfil.properties
-   SPRING_PROFILES="hom"
-elif [ "$1" = "preprod" ]; then
-   echo "perfil=preproducao" > /config/perfil.properties
-   SPRING_PROFILES="prod"
-else
-   echo "perfil=desenvolvimento" > /config/perfil.properties
-   SPRING_PROFILES="dev"
-fi
-
-export CI_ENVIRONMENT=$1
-
-java $JVM_OPTS -Djava.net.preferIPv4Stack=true -Dserver.port=443 -jar /tmp/*.jar -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8 --spring.profiles.active=$SPRING_PROFILES --eureka.instance.hostname=${DOMAIN}
-
+public ExampleDTO findExample(String id) {
+		try {
+			ExampleDTO exampleDTO = exampleRepository.findById(id);
+			if (exampleDTO != null) {
+				return exampleDTO;
+			} else {
+				throw new RepositoryException(
+						new StringBuilder(Messages.SERVICE_ERROR_EXAMPLEDTO_NOT_FOUND).toString(),
+						IntegrationAPIError.ERROR_API_EXAMPLEDTO_SERVICE, HttpStatus.NOT_FOUND);
+			}
+		} catch (RepositoryException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new RepositoryException(
+					new StringBuilder(Messages.SERVICE_ERROR_FIND_EXAMPLE)
+					.append(e.getMessage())
+					.toString(),
+					IntegrationAPIError.ERROR_INTEGRATION_EXAMPLEDTO_SERVICE, e);
+		}
+	}
 ```
 
-* Nesse padrão existe os jobs de maven release no qual geram nova versão e publicam no Nexus
-```shell
-mvn clean -DskipTests -Darguments=-DskipTests release:prepare -B -Dresume=false -DscmCommentPrefix="[ci skip]"
+#### Repository Class
 ```
-
-```shell
-mvn release:perform
+public ExampleEntity findById(String id) {
+		try {
+			return genericJdbcTemplate.queryForSQLName(QueriesName.FIND_BY_ID,
+					BeanPropertyRowMapper.newInstance(ExampleEntity.class));
+		} catch (Exception e) {
+			throw new RepositoryException(
+					new StringBuilder(Messages.REPOSITORY_ERROR_FIND_ID)
+					.append(e.getMessage())
+					.toString(), IntegrationAPIError
+					.ERROR_INTEGRATION_EXAMPLE_REPOSITORY);
+		}
+	}
 ```
-
-#### Como forçar atualização completa do pipeline a partir do repo-default
-* Os arquivos start.sh, config.conf e Dockerfile não são atualizados automaticamente pois tratam-se de templates que são criados automaticamente durante a primeira execução de um pipeline.
-No entanto, caso precise que sejam alterados em seu repositório, basta remover a pasta DEPLOY de seu repositório que o pipeline re-criará com o conteúdo existente no repo-default.
-
