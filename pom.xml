@@ -6,7 +6,7 @@
 
 	<groupId>comum.exception.handler</groupId>
 	<artifactId>comum-exception-handler</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>Exception Handler</name>
 	<description>lib for using the exception handler</description>
 
