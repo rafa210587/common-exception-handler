@@ -9,23 +9,25 @@ import comum.exception.handler.domain.GenericError;
  * @author rafael.goncalves
  */
 
-public class BusinessException extends Exception {
+public class ConflictException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public BusinessException(String msg, GenericError genericError) {
+	HttpStatus httpStatus = HttpStatus.CONFLICT;
+
+	public ConflictException(String msg, GenericError genericError) {
 		super(msg, genericError);
 	}
 
-	public BusinessException(String msg, GenericError genericError, Throwable cause) {
+	public ConflictException(String msg, GenericError genericError, Throwable cause) {
 		super(msg, genericError, cause);
 	}
 
-	public BusinessException(String msg, GenericError genericError, HttpStatus httpStatus) {
+	public ConflictException(String msg, GenericError genericError, HttpStatus httpStatus) {
 		super(msg, genericError, httpStatus);
 	}
 
-	public BusinessException(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
+	public ConflictException(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
 		super(msg, genericError, httpStatus, cause);
 	}
 

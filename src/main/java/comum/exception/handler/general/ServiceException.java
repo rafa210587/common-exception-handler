@@ -13,20 +13,20 @@ public class ServiceException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public ServiceException(String msg, GenericError trustError) {
-		super(msg, trustError);
+	public ServiceException(String msg, GenericError genericError) {
+		super(msg, genericError);
 	}
 
-	public ServiceException(String msg, GenericError trustError, Throwable cause) {
-		super(msg, trustError, cause);
+	public ServiceException(String msg, GenericError genericError, Throwable cause) {
+		super(msg, genericError, cause);
 	}
 
-	public ServiceException(String msg, GenericError trustError, HttpStatus httpStatus) {
-		super(msg, trustError, httpStatus);
+	public ServiceException(String msg, GenericError genericError, HttpStatus httpStatus) {
+		super(msg, genericError, httpStatus);
 	}
 
-	public ServiceException(String msg, GenericError trustError, HttpStatus httpStatus, Throwable cause) {
-		super(msg, trustError, httpStatus, cause);
+	public ServiceException(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
+		super(msg, genericError, httpStatus, cause);
 	}
 
 }

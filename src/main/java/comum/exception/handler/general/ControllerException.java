@@ -12,20 +12,20 @@ public class ControllerException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public ControllerException(String msg, GenericError trustError) {
-		super(msg, trustError);
+	public ControllerException(String msg, GenericError genericError) {
+		super(msg, genericError);
 	}
 
-	public ControllerException(String msg, GenericError trustError, Throwable cause) {
-		super(msg, trustError, cause);
+	public ControllerException(String msg, GenericError genericError, Throwable cause) {
+		super(msg, genericError, cause);
 	}
 
-	public ControllerException(String msg, GenericError trustError, HttpStatus httpStatus) {
-		super(msg, trustError, httpStatus);
+	public ControllerException(String msg, GenericError genericError, HttpStatus httpStatus) {
+		super(msg, genericError, httpStatus);
 	}
 
-	public ControllerException(String msg, GenericError trustError, HttpStatus httpStatus, Throwable cause) {
-		super(msg, trustError, httpStatus, cause);
+	public ControllerException(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
+		super(msg, genericError, httpStatus, cause);
 	}
 
 }

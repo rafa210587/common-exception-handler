@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * Generic class that will intercept the error thrown in the access layers or integrations.
- * @author alan.franco
+ * @author rafael.goncalves
  */
 @ControllerAdvice 
 @Slf4j
@@ -22,13 +22,12 @@ public class IntegrationServiceExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<StandardError> trustHubException(Exception e, HttpServletRequest request) {
-		StandardError err = new StandardError(new Timestamp(System.currentTimeMillis()), e.getTrustError().getErrorDescription(), e.getMessage(), request.getRequestURI());		
+		StandardError err = new StandardError(new Timestamp(System.currentTimeMillis()), e.getGenericError().getErrorDescription(), e.getMessage());		
 		if(e != null && e.getMessage() != null) {
 			if(e.getMessage().contains("timestamp")	
-					&& (e.getMessage().contains("errorCode") || e.getMessage().contains("status")) 
+					&& (e.getMessage().contains("status")) 
 						&& (e.getMessage().contains("errorDescription") || e.getMessage().contains("error")) 
-							&& e.getMessage().contains("message") 
-								&& e.getMessage().contains("path")){
+							&& e.getMessage().contains("message")){
 				String erro = e.getMessage().substring(e.getMessage().indexOf("{"), e.getMessage().lastIndexOf("}")+1);
 				erro = erro.replaceAll("\"" + "status" +  "\"", "\"" + "errorCode" +  "\"");
 				erro = erro.replaceAll("\""  + "error" +  "\"", "\"" + "errorDescription" +  "\"");

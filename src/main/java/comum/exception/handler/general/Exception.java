@@ -13,33 +13,33 @@ public class Exception extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	GenericError trustError;
+	GenericError genericError;
 	HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
-	public Exception(String msg, GenericError trustError) {
+	public Exception(String msg, GenericError genericError) {
 		super(msg);
 
 	}
 
-	public Exception(String msg, GenericError trustError, Throwable cause) {
+	public Exception(String msg, GenericError genericError, Throwable cause) {
 		super(msg, cause);
 
 	}
 
-	public Exception(String msg, GenericError trustError, HttpStatus httpStatus) {
+	public Exception(String msg, GenericError genericError, HttpStatus httpStatus) {
 		super(msg);
 
 		this.httpStatus = httpStatus;
 	}
 
-	public Exception(String msg, GenericError trustError, HttpStatus httpStatus, Throwable cause) {
+	public Exception(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
 		super(msg, cause);
 
 		this.httpStatus = httpStatus;
 	}
 
-	public GenericError getTrustError() {
-		return trustError;
+	public GenericError getGenericError() {
+		return genericError;
 	}
 	public HttpStatus getHttpStatus() {
 		return httpStatus;

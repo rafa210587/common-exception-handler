@@ -13,19 +13,19 @@ public class DataValidationException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public DataValidationException(String msg, GenericError trustError) {
-		super(msg, trustError);
+	public DataValidationException(String msg, GenericError genericError) {
+		super(msg, genericError);
 	}
 
-	public DataValidationException(String msg, GenericError trustError, Throwable cause) {
-		super(msg, trustError, cause);
+	public DataValidationException(String msg, GenericError genericError, Throwable cause) {
+		super(msg, genericError, cause);
 	}
 
-	public DataValidationException(String msg, GenericError trustError, HttpStatus httpStatus) {
-		super(msg, trustError, httpStatus);
+	public DataValidationException(String msg, GenericError genericError, HttpStatus httpStatus) {
+		super(msg, genericError, httpStatus);
 	}
 
-	public DataValidationException(String msg, GenericError trustError, HttpStatus httpStatus, Throwable cause) {
-		super(msg, trustError, httpStatus, cause);
+	public DataValidationException(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
+		super(msg, genericError, httpStatus, cause);
 	}
 }

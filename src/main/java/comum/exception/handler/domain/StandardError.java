@@ -27,12 +27,11 @@ public class StandardError implements Serializable {
 	public StandardError() {
 	}
 
-	public StandardError(Timestamp timestamp, String errorDescription, String message, String path) {
+	public StandardError(Timestamp timestamp, String errorDescription, String message) {
 		super();
 		this.timestamp = timestamp;
 		this.errorDescription = errorDescription;
 		this.message = message;
-		this.path = path;
 	}
 
 	
