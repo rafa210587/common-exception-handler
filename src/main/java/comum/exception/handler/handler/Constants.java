@@ -2,7 +2,7 @@ package comum.exception.handler.handler;
 
 /**
  * Constants
- * @author alan.franco
+ * @author rafael.goncalves
  */
 public interface Constants {
 	

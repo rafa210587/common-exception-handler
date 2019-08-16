@@ -1,6 +1,5 @@
 package comum.exception.handler.general;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.http.HttpStatus;
 
 import comum.exception.handler.domain.GenericError;
@@ -10,7 +9,7 @@ import comum.exception.handler.domain.GenericError;
  * 
  * @author rafael.goncalves
  */
-@ConditionalOnClass
+
 public class GenericException extends RuntimeException {
 
 private static final long serialVersionUID = 1L;

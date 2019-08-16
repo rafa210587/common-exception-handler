@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 
  * Class that will store the field name and description. 
- * @author alan.franco
+ * @author rafael.goncalves
  */
 @Data
 public class FieldMessage implements Serializable {

@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 /**
  * Class that will return errors in the default
- * @author alan.franco
+ * @author rafael.goncalves
  */
 public class StandardError implements Serializable {
 

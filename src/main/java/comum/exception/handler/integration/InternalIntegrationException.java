@@ -8,7 +8,7 @@ import comum.exception.handler.general.GenericException;
 
 /**
  * Exception that will occur in internal integration 
- * @author alan.franco
+ * @author rafael.goncalves
  */
 public class InternalIntegrationException extends GenericException {
 
