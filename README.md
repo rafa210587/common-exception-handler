@@ -10,7 +10,7 @@ Import in your project
 	<version>?.?.?</version>
 
 
-And include in your main class the @Import({ CLASNAME.class })
+And include in your main class the @Import({ ExceptionConfig.class })
 
 You also need to create two classes, one for the error description you want to assign and another with a specific message for the client about your error.
 
