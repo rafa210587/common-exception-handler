@@ -9,7 +9,7 @@ import comum.exception.handler.domain.GenericError;
  * @author rafael.goncalves
  */
 
-public class NotFoundException extends Exception {
+public class NotFoundException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +29,15 @@ public class NotFoundException extends Exception {
 
 	public NotFoundException(String msg, GenericError genericError, HttpStatus httpStatus, Throwable cause) {
 		super(msg, genericError, httpStatus, cause);
+	}
+	
+	@Override
+	public HttpStatus getHttpStatus() {
+		return httpStatus;
+	}
+	@Override
+	public void setHttpStatus(HttpStatus httpStatus) {
+		this.httpStatus = httpStatus;
 	}
 
 }

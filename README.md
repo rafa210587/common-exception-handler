@@ -9,6 +9,13 @@ Import in your project
 		<artifactId>comum-exception-handler</artifactId>
 	<version>?.?.?</version>
 
+
+And include in your main class the @Import({ CLASNAME.class })
+
+You also need to create two classes, one for the error description you want to assign and another with a specific message for the client about your error.
+
+The first class maybe only a interface Enum class, and the second one MUST implements GenericError that is located at this lib.
+
 # Example of use:
 
 #### Business Class
@@ -61,6 +68,21 @@ public ExampleEntity findById(String id) {
 					.append(e.getMessage())
 					.toString(), IntegrationAPIError
 					.ERROR_INTEGRATION_EXAMPLE_REPOSITORY);
+		}
+	}
+```
+#### NotFoundException Class
+```
+public ExampleEntity findById(String id) {
+		try {
+			return genericJdbcTemplate.queryForSQLName(QueriesName.FIND_BY_ID,
+					BeanPropertyRowMapper.newInstance(ExampleEntity.class));
+		} catch (Exception e) {
+			throw new NotFoundException(
+					new StringBuilder(Messages.DATA_NOT_FOUND)
+					.append(e.getMessage())
+					.toString(), DataNotFoundError
+					.NOT_FOUND_TABLE_PAYMENT);
 		}
 	}
 ```

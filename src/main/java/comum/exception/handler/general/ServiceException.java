@@ -9,7 +9,7 @@ import comum.exception.handler.domain.GenericError;
  * 
  * @author alan.franco
  */
-public class ServiceException extends Exception {
+public class ServiceException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 

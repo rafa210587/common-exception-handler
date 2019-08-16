@@ -9,7 +9,7 @@ import comum.exception.handler.domain.GenericError;
  * @author rafael.goncalves
  */
 
-public class BadGatewayException extends Exception {
+public class BadGatewayException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 

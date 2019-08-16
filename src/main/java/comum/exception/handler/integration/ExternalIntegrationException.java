@@ -3,14 +3,14 @@ package comum.exception.handler.integration;
 import org.springframework.http.HttpStatus;
 
 import comum.exception.handler.domain.GenericError;
-import comum.exception.handler.general.Exception;
+import comum.exception.handler.general.GenericException;
 
 
 /**
  * Exception that will occur in external integration 
  * @author alan.franco
  */
-public class ExternalIntegrationException extends Exception {
+public class ExternalIntegrationException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 

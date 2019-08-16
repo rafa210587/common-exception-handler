@@ -9,7 +9,7 @@ import comum.exception.handler.domain.GenericError;
  * @author rafael.goncalves
  */
 
-public class RequestTimeoutException extends Exception {
+public class RequestTimeoutException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 

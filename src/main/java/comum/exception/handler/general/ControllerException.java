@@ -8,7 +8,7 @@ import comum.exception.handler.domain.GenericError;
  * Exception that will occur in the control layer
  * @author rafael.goncalves
  */
-public class ControllerException extends Exception {
+public class ControllerException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 

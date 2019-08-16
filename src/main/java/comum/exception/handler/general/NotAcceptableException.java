@@ -9,7 +9,7 @@ import comum.exception.handler.domain.GenericError;
  * @author rafael.goncalves
  */
 
-public class NotAcceptableException extends Exception {
+public class NotAcceptableException extends GenericException {
 
 	private static final long serialVersionUID = 1L;
 
