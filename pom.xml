@@ -14,12 +14,11 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git@gitlab.interno.srmasset.com/COMUM/reference/comum-exception-handler.git</connection>
-		<developerConnection>scm:git:git@gitlab.interno.srmasset.com/COMUM/reference/comum-exception-handler.git</developerConnection>
-		<url>git@gitlab.interno.srmasset.com/COMUM/reference/comum-exception-handler.git</url>
+		<connection>scm:git:git@gitlab.interno.srmasset.com:COMUM/reference/comum-exception-handler.git</connection>
+		<developerConnection>scm:git:git@gitlab.interno.srmasset.com:COMUM/reference/comum-exception-handler.git</developerConnection>
+		<url>git@gitlab.interno.srmasset.com:COMUM/reference/comum-exception-handler.git</url>
 		<tag>HEAD</tag>
 	</scm>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
