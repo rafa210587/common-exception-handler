@@ -19,7 +19,7 @@
 		<url>git@gitlab.interno.srmasset.com/COMUM/reference/comum-exception-handler.git</url>
 		<tag>HEAD</tag>
 	</scm>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -94,5 +94,6 @@
 			<url>http://nexus.interno.srmasset.com/repository/releases/</url>
 		</repository>
 	</distributionManagement>
+
 
 </project>
