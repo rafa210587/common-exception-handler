@@ -47,7 +47,7 @@ public ExampleDTO findExample(String id) {
 		} catch (RepositoryException e) {
 			throw e;
 		} catch (Exception e) {
-			throw new RepositoryException(
+			throw new Service(
 					new StringBuilder(Messages.SERVICE_ERROR_FIND_EXAMPLE)
 					.append(e.getMessage())
 					.toString(),

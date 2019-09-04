@@ -14,9 +14,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git@gitlab.interno.srmasset.com:COMUM/reference/comum-exception-handler.git</connection>
-		<developerConnection>scm:git:git@gitlab.interno.srmasset.com:COMUM/reference/comum-exception-handler.git</developerConnection>
-		<url>git@gitlab.interno.srmasset.com:COMUM/reference/comum-exception-handler.git</url>
+		<connection>scm:git:git@gitlab.</connection>
+		<developerConnection>scm:git:git@gitlab.</developerConnection>
+		<url>git@gitlabt</url>
 		<tag>HEAD</tag>
 	</scm>
 	<dependencies>
@@ -38,51 +38,51 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<checkModificationExcludes>
-						<checkModificationExclude>pom.xml</checkModificationExclude>
-						<checkModificationExclude>.gitlab-ci.yml</checkModificationExclude>
-					</checkModificationExcludes>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-plugin</artifactId>
-						<version>1.8.1</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<!-- <version>3.1</version> -->
-				<configuration>
-					<compilerArgument>-parameters</compilerArgument>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-release-plugin</artifactId>
+			<configuration>
+				<tagNameFormat>v@{project.version}</tagNameFormat>
+				<checkModificationExcludes>
+					<checkModificationExclude>pom.xml</checkModificationExclude>
+					<checkModificationExclude>.gitlab-ci.yml</checkModificationExclude>
+				</checkModificationExcludes>
+			</configuration>
+			<dependencies>
+				<dependency>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>1.8.1</version>
+				</dependency>
+			</dependencies>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<!-- <version>3.1</version> -->
+			<configuration>
+				<compilerArgument>-parameters</compilerArgument>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
 
 
 	<repositories>
 		<repository>
 			<id>Nexus</id>
-			<url>http://nexus.interno.srmasset.com/repository/releases/</url>
+			<url></url>
 		</repository>
 		<repository>
 			<id>Nexus-SNAPSHOTS</id>
-			<url>http://nexus.interno.srmasset.com/repository/maven-snapshots/</url>
+			<url></url>
 		</repository>
 		<repository>
 			<id>spring-releases</id>
-			<url>https://repo.spring.io/libs-release</url>
+			<url></url>
 		</repository>
 	</repositories>
 
@@ -90,7 +90,7 @@
 		<repository>
 			<id>Nexus</id>
 			<name>Repositório do Nexus</name>
-			<url>http://nexus.interno.srmasset.com/repository/releases/</url>
+			<url></url>
 		</repository>
 	</distributionManagement>
 
